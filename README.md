@@ -14,6 +14,7 @@ Download/clone repo and copy the contents of `app` directory to where your http 
 
 #### Docker / Podman
 
+
 ##### Prerequisites:
  - Docker: [Linux](https://docs.docker.com/install/linux/docker-ce/debian/), [Mac](https://hub.docker.com/editions/community/docker-ce-desktop-mac), [Windows](https://hub.docker.com/editions/community/docker-ce-desktop-windows)
  - Also tested with [Podman](https://podman.io/) (replace docker with podman in commands below)
@@ -28,6 +29,22 @@ Download/clone repo and copy the contents of `app` directory to where your http 
 Please note:
  - You can change host's port (`4000`) to any valid port you may want
  - You can use `--user` switch in your `docker run` command to run the process as a different user
+ 
+##### Docker Compose
+
+Clone the repository, then run the `docker-compose` command:
+
+```
+git clone https://github.com/fossabot/sui.git
+cd sui
+docker-compose up -d --build
+```
+
+To retain configuration during updates and ensure that changes can be made without requiring a rebuild of the container, complete the following steps:
+
+ - Create a `config` directory in the root project folder
+ - Copy all the configuration files from `app/config` and modify as needed
+ - Uncomment the volume mount in `docker-compose.yml`. This mounts the created `config` directory to the configuration directory on the container
 
 ### Customization
 
@@ -92,13 +109,8 @@ Please note:
 
 
 #### Color themes
-These can be added or customized in the themer.js file. When changing the name of a theme or adding one, make sure to edit this section in index.html accordingly:
 
-```
-    <section  class="themes">
-```
-
-I might add a simpler way to edit themes at some point, but adding the current ones should be pretty straight forward.
+These can be added or customized in the `themes.js` configuration file.
 
 
 ### Known Issues
